@@ -34,3 +34,21 @@ var overNinety = ancestory.filter(function (person) {
 })
 
 console.log(map(overNinety, function (person) { return person.name; }));
+
+//Summarizing with Reduce 
+
+/* Another common computation on Arrays is computing a single value from them.
+ * The Higher Order function that represents this functionality is called the Reduce/Fold Function
+ * you can think of this a folding of array, one element at a time , while summarizing, you'd start with the zero element and combine it with the next element according to a combining function until you're left with a single result
+ */
+
+function reduce(array,combine,start) {
+    var current = start;
+    for (var i = 0; i < array.length; i++) {
+        current = combine(current, array[i]);
+    }
+    return current;
+
+}
+
+console.log(reduce([1, 2, 3, 4, 5, 6, 7], function (a, b) { return a + b }, 0));
