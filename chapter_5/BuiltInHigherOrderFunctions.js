@@ -28,7 +28,7 @@ function map(array, transform) {
     }
     return mapped;
 }
-var ancestory = [];
+
 var overNinety = ancestory.filter(function (person) {
     return person.born - person.died > 90;
 })
@@ -52,3 +52,4 @@ function reduce(array,combine,start) {
 }
 
 console.log(reduce([1, 2, 3, 4, 5, 6, 7], function (a, b) { return a + b }, 0));
+
