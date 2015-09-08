@@ -1,3 +1,5 @@
+// the unless construct is the opposite of the if construct, it runs unless the condition mentioned is satisfied
+
 function unless (test,then) {
 	if(!test) then();
 }
