@@ -1,6 +1,6 @@
 function range (start,end,steps) {
-	if (steps=null) step = 1;
-	var arr = [];	
+	if (steps==null) step = 1;
+	var arr = [];
 	if (steps>0) {
 		for(var i = start;i<=end;i+=steps){
 		arr.push(i);
@@ -23,4 +23,3 @@ function sum (arr) {
 }
 
 console.log(range(10,1,-3));
-

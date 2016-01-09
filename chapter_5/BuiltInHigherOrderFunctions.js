@@ -1,4 +1,6 @@
-﻿//filtering an array
+﻿var ancestory = require('./ancestry');
+
+//filtering an array
 
 function filter(array, test) {
     var passed = [];
@@ -42,7 +44,7 @@ console.log(map(overNinety, function (person) { return person.name; }));
  * you can think of this a folding of array, one element at a time , while summarizing, you'd start with the zero element and combine it with the next element according to a combining function until you're left with a single result
  */
 
-function reduce(array,combine,start) {
+function reduce(array, combine, start) {
     var current = start;
     for (var i = 0; i < array.length; i++) {
         current = combine(current, array[i]);
