@@ -12,3 +12,7 @@ repeat(7,function(n){
 		console.log(n, "is even" );
 	})
 })
+
+var okay = function (n) {
+
+}
