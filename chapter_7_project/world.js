@@ -36,7 +36,7 @@ Grid.prototype.isInside = function(vector){
 };
 Grid.prototype.get = function(vector){
   return this.space[vector.x + vector.y*this.width];
-}
+};
 Grid.prototype.set = function(vector,value){
   this.space[vector.x + this.width * vector.y] = value;
 };
@@ -183,9 +183,16 @@ View.prototype.findAll = function (ch) {
   return found;
 };
 
-View.prottype.find = function (ch) {
+View.prototype.find = function (ch) {
   var found = this.findAll(ch);
   if (found.length == 0)
     return null;
   return randomElement(found)  ;
 };
+
+// It Moves
+
+for(var i =0; i < 5; i++){
+  world.turn();
+  console.log(world.toString());
+}
