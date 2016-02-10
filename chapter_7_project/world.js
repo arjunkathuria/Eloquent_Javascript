@@ -16,6 +16,7 @@ function Vector(x,y){
   this.x = x;
   this.y = y;
 }
+
 Vector.prototype.plus = function(other){
   return new Vector(this.x+other.x, this.y+other.y) ;
 };
@@ -34,9 +35,11 @@ Grid.prototype.isInside = function(vector){
   return vector.x >=0 && vector.x <this.width &&
          vector.y >=0 && vector.y < this.height;
 };
+
 Grid.prototype.get = function(vector){
   return this.space[vector.x + vector.y*this.width];
 };
+
 Grid.prototype.set = function(vector,value){
   this.space[vector.x + this.width * vector.y] = value;
 };
@@ -196,3 +199,57 @@ for(var i =0; i < 5; i++){
   world.turn();
   console.log(world.toString());
 }
+
+// the wallFollower is defined here, i was just bored :D !
+
+function dirPlus(dir,n){
+  var index = directionNames.indexOf(dir);
+  return directionNames[(index + n + 8)%8];
+
+}
+
+function WallFollower(){
+  this.dir = "s";
+}
+
+WallFollower.prototype.act = function(view){
+  var start = this.dir;
+  if (view.look(dirPlus(this.dir, -3)) != " " )
+    start = this.dir = dirPlus(this.dir, -2);
+  while (view.look(this.dir) != " ") {
+    this.dir = dirPlus(this.dir, 1);
+    if (this.dir == start) break;
+  }
+  return {type: "move", direction: this.dir};
+};
+
+     
+// A more Life Like World
+
+function LifeLikeWorld(map, legend){
+  World.call(this, map, legend)
+}
+
+LifeLikeWorld.prototype = Object.create(World.prototype);
+
+var actionTypes = Object.create(null);
+
+LifeLikeWorld.prototype.letAct = function(critter, vector){
+  var action = critter.act(new View(this, vector));
+  var handled = action && 
+    action.type in actionTypes &&
+    actionTypes[action.type].call(this, critter, vector, action);
+
+    if(!handled){
+      critter.energy -= 0.2;
+      if(critter.energy <= 0 )
+        this.grid.set(vector, null);
+    }
+};
+
+
+
+
+
+
+
