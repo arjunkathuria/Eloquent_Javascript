@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roller Meowster</title>
+</head>
+<body>
+    <p style="text-align: center;padding: 250px 50px 50px 50px">
+        <img src="http://www.dolc.de/static/image/smiley/mao/33.gif" alt="a cat vector" style="position: relative">
+    </p>
+
+    <script>
+
+        var cat = document.querySelector("img");
+        var angle = 0, lastTime = null;
+        function animate(time) {
+            if(lastTime!=null)
+                angle += (time - lastTime) * 0.001;
+            lastTime = time;
+
+            cat.style.top = (Math.sin(angle) * 100) + "px";
+            cat.style.left = (Math.cos(angle) * 300) + "px"
+
+            requestAnimationFrame(animate)
+
+        }
+        requestAnimationFrame(animate);
+
+    </script>
+</body>
+</html>
