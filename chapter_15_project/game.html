@@ -9,11 +9,16 @@
     <script src="js/vector.js"></script>
     <script src="js/actors.js"></script>
     <script src="js/DOMDisplay.js"></script>
+    <script src="js/motionAndCollison.js"></script>
+    <script src="js/actorsActions.js"></script>
+    <script src="js/trackingKeys.js"></script>
+    <script src="js/runningGame.js"></script>
 </head>
 <body>
 <script>
     var simpleLevel = new Level(simpleLevelPlan);
-    var display = new DOMDisplay(document.body, simpleLevel);
+//    var display = new DOMDisplay(document.body, simpleLevel);
+    runGame([simpleLevelPlan], DOMDisplay);
 </script>
 </body>
 </html>
